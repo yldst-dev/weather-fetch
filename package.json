@@ -1,5 +1,5 @@
 {
-  "name": "weather-webfetch",
+  "name": "weather-fetch",
   "version": "1.0.2",
   "description": "CLI and TypeScript library for location-based weather forecasts and URL web fetching",
   "main": "dist/index.js",
@@ -13,7 +13,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "weather-webfetch": "dist/cli.js"
+    "weather-fetch": "dist/cli.js"
   },
   "files": [
     "dist",

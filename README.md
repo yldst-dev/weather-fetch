@@ -1,4 +1,4 @@
-# weather-webfetch
+# weather-fetch
 
 A TypeScript CLI and library for location-based weather forecasts and URL web fetching.
 
@@ -16,14 +16,14 @@ It provides:
 Run without installing:
 
 ```bash
-npx weather-webfetch weather "대전 동구"
+npx weather-fetch weather "대전 동구"
 ```
 
 Install globally:
 
 ```bash
-npm install --global weather-webfetch
-weather-webfetch weather "대전 동구"
+npm install --global weather-fetch
+weather-fetch weather "대전 동구"
 ```
 
 ## Install From Source
@@ -38,25 +38,25 @@ npm run build
 Get tomorrow's forecast:
 
 ```bash
-weather-webfetch weather "대전 동구"
+weather-fetch weather "대전 동구"
 ```
 
 Get a specific date in JSON:
 
 ```bash
-weather-webfetch weather "대전 동구" --date 2026-03-09 --json
+weather-fetch weather "대전 동구" --date 2026-03-09 --json
 ```
 
 Fetch any URL directly:
 
 ```bash
-weather-webfetch fetch "https://api.open-meteo.com/v1/forecast?latitude=36.3120&longitude=127.4554&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FSeoul" --format text
+weather-fetch fetch "https://api.open-meteo.com/v1/forecast?latitude=36.3120&longitude=127.4554&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=Asia%2FSeoul" --format text
 ```
 
 ## Library Usage
 
 ```ts
-import { fetchWeatherForecast, webfetch } from "weather-webfetch"
+import { fetchWeatherForecast, webfetch } from "weather-fetch"
 
 const forecast = await fetchWeatherForecast("대전 동구", { date: "tomorrow" })
 console.log(forecast.weatherSummary, forecast.temperatureMax, forecast.temperatureMin)

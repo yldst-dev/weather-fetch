@@ -20,7 +20,7 @@ interface WeatherCommandOptions {
 }
 
 program
-  .name("weather-webfetch")
+  .name("weather-fetch")
   .description("Weather-focused CLI built on URL fetch")
   .version(version)
 
