@@ -32,6 +32,17 @@
   "license": "MIT",
   "author": "sumin",
   "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yldst-dev/weather-fetch.git"
+  },
+  "homepage": "https://github.com/yldst-dev/weather-fetch#readme",
+  "bugs": {
+    "url": "https://github.com/yldst-dev/weather-fetch/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=18"
   },

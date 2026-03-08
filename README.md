@@ -91,3 +91,23 @@ npm run test
 npm run build
 npm pack --dry-run
 ```
+
+## Release Flow
+
+This repository uses tag-based releases.
+
+1. Update `package.json` version.
+2. Push the commit to `main`.
+3. Create and push a matching tag such as `v1.0.1`.
+4. GitHub Actions will:
+   - validate that the tag matches `package.json`
+   - run `check`, `test`, and `build`
+   - attach the generated `.tgz` tarball to a GitHub Release
+   - publish the package to npm
+
+```bash
+git tag v1.0.1
+git push origin main --tags
+```
+
+For npm publishing, configure npm Trusted Publishing for this GitHub repository so the `Release` workflow can publish without a long-lived `NPM_TOKEN`.
