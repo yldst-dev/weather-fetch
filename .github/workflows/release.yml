@@ -47,7 +47,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          PACK_FILE="$(npm pack)"
+          PACK_JSON="$(npm pack --json --ignore-scripts)"
+          PACK_FILE="$(printf '%s\n' "$PACK_JSON" | node -e "const fs = require('node:fs'); const parsed = JSON.parse(fs.readFileSync(0, 'utf8')); if (!Array.isArray(parsed) || !parsed[0]?.filename) { process.exit(1); } console.log(parsed[0].filename)")"
           echo "file=$PACK_FILE" >> "$GITHUB_OUTPUT"
 
       - name: Create or update draft GitHub release
