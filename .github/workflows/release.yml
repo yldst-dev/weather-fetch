@@ -51,6 +51,19 @@ jobs:
           PACK_FILE="$(printf '%s\n' "$PACK_JSON" | node -e "const fs = require('node:fs'); const parsed = JSON.parse(fs.readFileSync(0, 'utf8')); if (!Array.isArray(parsed) || !parsed[0]?.filename) { process.exit(1); } console.log(parsed[0].filename)")"
           echo "file=$PACK_FILE" >> "$GITHUB_OUTPUT"
 
+      - name: Check whether npm version already exists
+        id: npm-version
+        shell: bash
+        run: |
+          set -euo pipefail
+          PACKAGE_NAME="$(node -p "require('./package.json').name")"
+          PACKAGE_VERSION="$(node -p "require('./package.json').version")"
+          if npm view "${PACKAGE_NAME}@${PACKAGE_VERSION}" version >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Create or update draft GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -68,6 +81,7 @@ jobs:
           fi
 
       - name: Publish to npm
+        if: steps.npm-version.outputs.exists != 'true'
         run: npm publish --provenance --access public
 
       - name: Publish GitHub release

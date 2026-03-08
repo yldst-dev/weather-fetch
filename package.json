@@ -1,6 +1,6 @@
 {
   "name": "weather-fetch-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI and TypeScript library for location-based weather forecasts and URL web fetching",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
