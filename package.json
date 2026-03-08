@@ -1,0 +1,59 @@
+{
+  "name": "weather-webfetch",
+  "version": "1.0.0",
+  "description": "CLI and TypeScript library for location-based weather forecasts and URL web fetching",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "weather-webfetch": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test tests/**/*.test.ts",
+    "prepack": "npm run check && npm run test && npm run build",
+    "start": "node dist/cli.js"
+  },
+  "license": "MIT",
+  "author": "sumin",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "weather",
+    "forecast",
+    "cli",
+    "typescript",
+    "open-meteo",
+    "geocoding",
+    "nominatim",
+    "webfetch"
+  ],
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "commander": "^14.0.3",
+    "turndown": "^7.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.3",
+    "@types/turndown": "^5.0.6",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
